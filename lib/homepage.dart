@@ -72,13 +72,39 @@ class HomePage extends StatelessWidget {
              ) ,
                backgroundColor: Colors.white,
                leading: Icon(Icons.location_on_rounded,color: Colors.pink,),
+
                bottom: PreferredSize(
                  child: Container(
-                   height: 40,
-                   color: Colors.pink,
-                   child: Text("hello"),
+                   height: 60,
+                   child: Padding(
+                     padding: const EdgeInsets.fromLTRB(10,5,10,5),
+                     child: TextFormField(
+
+                       //onChanged: ,
+                       decoration: InputDecoration(
+                         focusedBorder: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(20),
+                           borderSide: BorderSide(color: Colors.pink, width: 3.0),
+                         ),
+                         enabledBorder: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(20),
+                           borderSide: BorderSide(color: Colors.pink, width: 3.0),
+                         ),
+                         hintText: "Search For Dishes",
+                         contentPadding: EdgeInsets.fromLTRB(0,5,0,0),
+
+
+                         border: OutlineInputBorder(
+                             borderRadius: BorderRadius.circular(20),
+
+                         ),
+                          prefixIcon: Icon(Icons.search,color: Colors.pink,),
+
+                       ),
+                     ),
+                   ),
                  ),
-                 preferredSize: Size(0,40),
+                 preferredSize: Size(10,60),
                ),
              ),
 
@@ -88,239 +114,236 @@ class HomePage extends StatelessWidget {
 
          body:
 
-          SafeArea(
-             child: ListView.builder(
-               itemCount: menus.length,
-                 itemBuilder: (BuildContext context , int index)
-                  {
-               return InkWell(
-                 onTap: (){
-                   Navigator.of(context).pushNamed(
-                     RecipeDetailScreen.routeName,
-                     arguments: menus[index].id,
-                   );
-                 },
-                 child: Container(
-                     height: 140,
-                     color: Colors.white,
-                     child: Row(
-                       mainAxisAlignment: MainAxisAlignment.start,
-                       children: [
-                         Container(
+          ListView.builder(
+            itemCount: menus.length,
+              itemBuilder: (BuildContext context , int index)
+               {
+            return InkWell(
+              onTap: (){
+                Navigator.of(context).pushNamed(
+                  RecipeDetailScreen.routeName,
+                  arguments: menus[index].id,
+                );
+              },
+              child: Container(
+                  height: 140,
+                  color: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
 
-                           width: MediaQuery.of(context).size.width /2.5,
-                           color: Colors.white,
-                           padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                           child: Center(
-                             child: Stack(
-                               // alignment: Alignment.topRight,
-                               children: [
-                                 Image(image: NetworkImage(
-                                     menus[index].imageUrl),
-                                   //alignment: Alignment.center,
-                                   fit: BoxFit.contain,
+                        width: MediaQuery.of(context).size.width /2.5,
+                        color: Colors.white,
+                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: Center(
+                          child: Stack(
+                            // alignment: Alignment.topRight,
+                            children: [
+                              Image(image: NetworkImage(
+                                  menus[index].imageUrl),
+                                //alignment: Alignment.center,
+                                fit: BoxFit.contain,
 //
 
-                                 ),
-                                 Positioned.fill(
-                                   child: Align(
-                                     alignment: Alignment.topRight,
-                                     child: Container(
-                                         decoration: BoxDecoration(
-                                             color: Colors.green,
-                                             borderRadius: BorderRadius.circular(3)
-                                         ),
-                                         margin: EdgeInsets.fromLTRB(0, 4, 4, 0),
-                                         height: 16,
-                                         width: 26,
-                                         child: Center(child: Text(menus[index].rating,
-                                           style: TextStyle(
-                                               color: Colors.white,
-                                               fontWeight: FontWeight.bold
-                                           ),)
-                                         )
-                                     ),
-                                   ),
-                                 ),
-                                 Positioned.fill(
-                                   child: Align(
-                                       alignment: Alignment.bottomRight,
-                                       child: Container(
-                                           decoration: BoxDecoration(
-                                               color: Colors.deepPurple,
-                                               borderRadius: BorderRadius.circular(3)
-                                           ),
-                                           margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
-                                           height: 16,
-                                           width: 65,
+                              ),
+                              Positioned.fill(
+                                child: Align(
+                                  alignment: Alignment.topRight,
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.green,
+                                          borderRadius: BorderRadius.circular(3)
+                                      ),
+                                      margin: EdgeInsets.fromLTRB(0, 4, 4, 0),
+                                      height: 16,
+                                      width: 26,
+                                      child: Center(child: Text(menus[index].rating,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold
+                                        ),)
+                                      )
+                                  ),
+                                ),
+                              ),
+                              Positioned.fill(
+                                child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepPurple,
+                                            borderRadius: BorderRadius.circular(3)
+                                        ),
+                                        margin: EdgeInsets.fromLTRB(0, 0, 4, 4),
+                                        height: 16,
+                                        width: 65,
 
-                                           child: Center(child: Text(menus[index].discount,style: TextStyle(
-                                               color: Colors.white,
-                                               fontWeight: FontWeight.bold
-                                           ),)
-                                           )
-                                       )
-                                   ),
-                                 ),
+                                        child: Center(child: Text(menus[index].discount,style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold
+                                        ),)
+                                        )
+                                    )
+                                ),
+                              ),
 
-                               ],
+                            ],
 
-                             ),
-                           ),
-                         ),
-                         Container(
-                           color: Colors.white,
-                           width: 10,
-                         ),
-                         Container(
+                          ),
+                        ),
+                      ),
+                      Container(
+                        color: Colors.white,
+                        width: 10,
+                      ),
+                      Container(
 
-                           child: Column(
+                        child: Column(
 
-                             crossAxisAlignment: CrossAxisAlignment.start,
-                             children: [
-                               Spacer(),
-                               Text(menus[index].title,
-                                 style: TextStyle(
-                                     fontSize: 18,
-                                     fontWeight: FontWeight.bold
-                                 ),
-                               ),
-                               SizedBox(
-                                 height: 4,
-                               ),
-                               Text(menus[index].address,
-                                 style: TextStyle(
-                                     fontSize: 12,
-                                     fontWeight: FontWeight.bold
-                                 ),
-                               ),
-                               Spacer(),
-                               RichText(
-                                 text: TextSpan(
-                                   style: Theme.of(context).textTheme.body1,
-                                   children: [
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Spacer(),
+                            Text(menus[index].title,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text(menus[index].address,
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                            Spacer(),
+                            RichText(
+                              text: TextSpan(
+                                style: Theme.of(context).textTheme.body1,
+                                children: [
 
-                                     WidgetSpan(
-                                       child: Padding(
-                                         padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                                         child: CircleAvatar(
-                                           backgroundColor: Colors.yellow[900],
-                                           radius: 8 ,
-                                           child: Icon(Icons.attach_money,
-                                             color: Colors.white,
-                                             size: 16,
-                                           ),
-                                         ),
-                                       ),
-                                     ),
-                                     TextSpan(text: (menus[index].price).toString(),
-                                       style: TextStyle(
-                                           fontSize: 12,
-                                           fontWeight: FontWeight.bold
-                                       ),),
-                                   ],
-                                 ),
-                               ),
-                               SizedBox(
-                                 height: 4,
-                               ),
-                               RichText(
-                                 text: TextSpan(
-                                   style: Theme.of(context).textTheme.body1,
-                                   children: [
+                                  WidgetSpan(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.yellow[900],
+                                        radius: 8 ,
+                                        child: Icon(Icons.attach_money,
+                                          color: Colors.white,
+                                          size: 16,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  TextSpan(text: (menus[index].price).toString(),
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold
+                                    ),),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                style: Theme.of(context).textTheme.body1,
+                                children: [
 
-                                     WidgetSpan(
-                                       child: Padding(
-                                         padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                                         child: CircleAvatar(
-                                           backgroundColor: Colors.pink[700],
-                                           radius: 8 ,
-                                           child: Icon(Icons.lightbulb,
-                                             color: Colors.white,
-                                             size: 11,
-                                           ),
-                                         ),
-                                       ),
-                                     ),
-                                     TextSpan(text: ' Redeem Piggybank Coins Here',
-                                       style: TextStyle(
-                                           fontSize: 12,
-                                           fontWeight: FontWeight.bold
-                                       ),),
-                                   ],
-                                 ),
-                               ),
+                                  WidgetSpan(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.pink[700],
+                                        radius: 8 ,
+                                        child: Icon(Icons.lightbulb,
+                                          color: Colors.white,
+                                          size: 11,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  TextSpan(text: ' Redeem Piggybank Coins Here',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold
+                                    ),),
+                                ],
+                              ),
+                            ),
 
-                               Spacer(),
-                               Row(
-                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                 children: [
-                                   RichText(
-                                     text: TextSpan(
-                                       style: Theme.of(context).textTheme.body1,
-                                       children: [
+                            Spacer(),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                RichText(
+                                  text: TextSpan(
+                                    style: Theme.of(context).textTheme.body1,
+                                    children: [
 
-                                         WidgetSpan(
-                                           child: Padding(
-                                             padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                                             child: CircleAvatar(
-                                               backgroundColor: Colors.green[700],
-                                               radius: 8 ,
-                                               child: Icon(Icons.electric_bike,
-                                                 color: Colors.white,
-                                                 size: 11,
-                                               ),
-                                             ),
-                                           ),
-                                         ),
-                                         TextSpan(text: 'Self Pickup in ${menus[index].pickuptime} min',
-                                           style: TextStyle(
-                                               fontSize: 12,
-                                               fontWeight: FontWeight.bold
-                                           ),),
-                                       ],
-                                     ),
-                                   ),
-                                   SizedBox(
-                                     width: 35,
-                                   ),
-                                   RichText(
-                                     text: TextSpan(
-                                       style: Theme.of(context).textTheme.body1,
-                                       children: [
+                                      WidgetSpan(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                                          child: CircleAvatar(
+                                            backgroundColor: Colors.green[700],
+                                            radius: 8 ,
+                                            child: Icon(Icons.electric_bike,
+                                              color: Colors.white,
+                                              size: 11,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      TextSpan(text: 'Self Pickup in ${menus[index].pickuptime} min',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold
+                                        ),),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 35,
+                                ),
+                                RichText(
+                                  text: TextSpan(
+                                    style: Theme.of(context).textTheme.body1,
+                                    children: [
 
-                                         WidgetSpan(
-                                           child: Padding(
-                                             padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                                             child: Icon(Icons.location_pin,
-                                               color: Colors.pink,
-                                               size: 18,
-                                             ),
-                                           ),
-                                         ),
-                                         TextSpan(text: "${menus[index].distance}",
-                                           style: TextStyle(
-                                               fontSize: 12,
-                                               fontWeight: FontWeight.bold
-                                           ),),
-                                       ],
-                                     ),
-                                   ),
+                                      WidgetSpan(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                                          child: Icon(Icons.location_pin,
+                                            color: Colors.pink,
+                                            size: 18,
+                                          ),
+                                        ),
+                                      ),
+                                      TextSpan(text: "${menus[index].distance}",
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold
+                                        ),),
+                                    ],
+                                  ),
+                                ),
 
-                                 ],
-                               ),
-                               Spacer()
-                             ],
-                           ),
-                         )
-                       ],
-                     )),
-               );
-                   }
-             )
-
-         ),
+                              ],
+                            ),
+                            Spacer()
+                          ],
+                        ),
+                      )
+                    ],
+                  )),
+            );
+                }
+          ),
        ),
      ),
     );
