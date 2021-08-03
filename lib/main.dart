@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (ctx) => Recipes(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Food Delivery',
         theme: ThemeData(
           primarySwatch: Colors.blue,
