@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooddelivery/homepage.dart';
 import 'package:fooddelivery/providers/recipes.dart';
+import 'package:fooddelivery/rough.dart';
 import 'package:fooddelivery/screens/recipe_detail_screen.dart';
 import 'package:provider/provider.dart';
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomePage(),
+        home: New(),
           routes: {
           RecipeDetailScreen.routeName: (ctx) => RecipeDetailScreen(),
 

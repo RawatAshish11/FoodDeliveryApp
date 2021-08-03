@@ -35,6 +35,8 @@ dev_dependencies:
   provider:
   flutter_svg:
   appbar_textfield:
+  custom_navigation_bar:
+  flutter_icons:
 
 
 # For information on the generic Dart part of this file, see the

@@ -75,6 +75,10 @@ class HomePage extends StatelessWidget {
 
                bottom: PreferredSize(
                  child: Container(
+                   // decoration: BoxDecoration(
+                   //   color: Colors.grey,
+                   //   borderRadius: BorderRadius.circular(15),
+                   // ),
                    height: 60,
                    child: Padding(
                      padding: const EdgeInsets.fromLTRB(10,5,10,5),
